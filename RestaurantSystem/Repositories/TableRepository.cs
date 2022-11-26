@@ -1,28 +1,18 @@
 ﻿using Newtonsoft.Json;
 using RestaurantSystem.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+
 using Formatting = Newtonsoft.Json.Formatting;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace RestaurantSystem.Repositories
 {
     public class TableRepository
     {
         private List<Table> tables;
-        private string FileName;
-
-        public TableRepository()
+          public TableRepository()
         {
             tables = new List<Table>();
-            tables.Add(new Table(1, "TBL1", true));
-            tables.Add(new Table(2, "TBL2", true));
-            tables.Add(new Table(3, "TBL3", false ));
-            tables.Add(new Table(4, "TBL4", true ));
-
+          
         }
 
         public void CreateJSON()
@@ -33,12 +23,29 @@ namespace RestaurantSystem.Repositories
         }
         public string ReadJSON()
         {
-            string text = File.ReadAllText(@"./Tables.json");
-            return JsonSerializer.Deserialize(text);
+            string json;
+            using (StreamReader jsonfile = new StreamReader(@"./Tables.json"))
+            {
+               json = jsonfile.ReadToEnd();
+                tables = JsonSerializer.Deserialize<List<Table>>(json);
+            }
+
+            if(tables != null && tables.Count > 0)
+            {
+                foreach (var item in tables)
+                {
+                    Console.WriteLine($"{item.Id}. Table: {item.Name}, is free: {item.IsFree}");
+                }
+            }
+            return json;
         }
         public List<Table> GetTable()
         {
             return tables;
+        }
+        public Table Retrieve(int tableId)
+        {
+            return tables.SingleOrDefault(x => x.Id == tableId);
         }
     }
 }

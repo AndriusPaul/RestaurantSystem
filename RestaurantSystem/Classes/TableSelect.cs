@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantSystem.Classes
 {
-    public class Food
+    public class TableSelect
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
+
     }
 }

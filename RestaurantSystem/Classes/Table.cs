@@ -10,13 +10,13 @@ namespace RestaurantSystem.Classes
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Status { get; set; }
+        public bool IsFree { get; set; }
 
-        public Table(int id, string name, bool status)
+        public Table(int id, string name, bool isFree)
         {
             Id= id;
             Name= name;
-            Status= status;
+            IsFree= isFree;
         }
     }
 }
