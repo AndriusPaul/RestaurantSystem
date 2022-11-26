@@ -2,21 +2,25 @@
   {
     "Id": 1,
     "Name": "TBL1",
-    "IsFree": true
+    "IsFree": true,
+    "Seats":  2
   },
   {
     "Id": 2,
     "Name": "TBL2",
-    "IsFree": false
+    "IsFree": false,
+    "Seats": 4
   },
   {
     "Id": 3,
     "Name": "TBL3",
-    "IsFree": false
+    "IsFree": false,
+    "Seats": 2
   },
   {
     "Id": 4,
     "Name": "TBL4",
-    "IsFree": true
+    "IsFree": true,
+    "Seats": 4
   }
 ]

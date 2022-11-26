@@ -34,7 +34,7 @@ namespace RestaurantSystem.Repositories
             {
                 foreach (var item in tables)
                 {
-                    Console.WriteLine($"{item.Id}. Table: {item.Name}, is free: {item.IsFree}");
+                    Console.WriteLine($"{item.Id}. Table: {item.Name}, Seats: {item.Seats}, is free: {item.IsFree}");
                 }
             }
             return json;

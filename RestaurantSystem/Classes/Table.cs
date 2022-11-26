@@ -11,12 +11,14 @@ namespace RestaurantSystem.Classes
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsFree { get; set; }
+        public int Seats { get; set; }
 
-        public Table(int id, string name, bool isFree)
+        public Table(int id, string name, bool isFree, int seats)
         {
-            Id= id;
-            Name= name;
-            IsFree= isFree;
+            Id = id;
+            Name = name;
+            IsFree = isFree;
+            Seats = seats;
         }
     }
 }
