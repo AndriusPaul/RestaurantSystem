@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "Coca-Cola",
+    "Price": 2.99,
+    "Quantity": 10
+  },
+  {
+    "Id": 2,
+    "Name": "Tea",
+    "Price": 1.99,
+    "Quantity": 20
+  },
+  {
+    "Id": 3,
+    "Name": "Coffe",
+    "Price": 3.99,
+    "Quantity": 10
+  },
+  {
+    "Id": 4,
+    "Name": "Sparkling Water",
+    "Price": 2.99,
+    "Quantity": 100
+  }
+]

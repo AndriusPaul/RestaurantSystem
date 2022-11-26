@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "TBL1",
+    "IsFree": true
+  },
+  {
+    "Id": 2,
+    "Name": "TBL2",
+    "IsFree": false
+  },
+  {
+    "Id": 3,
+    "Name": "TBL3",
+    "IsFree": false
+  },
+  {
+    "Id": 4,
+    "Name": "TBL4",
+    "IsFree": true
+  }
+]
