@@ -30,16 +30,54 @@ namespace RestaurantSystem.Repositories
                 tables = JsonSerializer.Deserialize<List<Table>>(json);
             }
 
-            if(tables != null && tables.Count > 0)
+            if(tables == null && tables.Count < 0)
             {
-                foreach (var item in tables)
+                Console.WriteLine("tables.json file is empty");
+            }else
+            {
+                foreach (var table in tables)
                 {
-                    Console.WriteLine($"{item.Id}. Table: {item.Name}, Seats: {item.Seats}, is free: {item.IsFree}");
+                    if(table.IsFree == true)
+                    {
+                        Console.WriteLine($"{table.Id}. {table.Name}, Seats: {table.Seats} - Laisvas");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{table.Id}. {table.Name}, Seats: {table.Seats} - Uzimta");
+                    }
+                    
                 }
             }
             return json;
         }
-        public List<Table> GetTable()
+
+        public string GetFreeTables()
+        {
+            string json;
+            using (StreamReader jsonfile = new StreamReader(@"./Tables.json"))
+            {
+                json = jsonfile.ReadToEnd();
+                tables = JsonSerializer.Deserialize<List<Table>>(json);
+            }
+            if (tables == null && tables.Count < 0)
+            {
+                Console.WriteLine("tables.json file is empty");
+            }
+            else
+            {
+                foreach (var table in tables)
+                {
+                    if (table.IsFree == true)
+                    {
+                        Console.WriteLine($"{table.Id}. {table.Name}, Seats: {table.Seats} - Laisvas");
+                    }
+                   
+
+                }
+            }
+                return json;
+        }
+        public List<Table> GetTables()
         {
             return tables;
         }

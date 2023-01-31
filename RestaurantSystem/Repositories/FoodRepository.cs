@@ -32,18 +32,29 @@ namespace RestaurantSystem.Repositories
                 foods = JsonSerializer.Deserialize<List<Food>>(json);
             }
 
-            if (foods != null && foods.Count > 0)
+            if (foods == null && foods.Count < 0)
             {
-                foreach (var item in foods)
+                Console.WriteLine("food.json file is empty");
+            }else
+            {
+
+                foreach (var food in foods)
                 {
-                    Console.WriteLine($"{item.Id}. Food: {item.Name}, Price: {item.Price}, Qty: {item.Quantity}");
+                    Console.WriteLine($"{food.Id}. {food.Name} - {food.Price}");
                 }
             }
             return json;
         }
-       public List<Food> GetFood()
+
+   
+       public List<Food> GetFoods()
         {
             return foods;
+        }
+
+        public Food RetrieveById(int foodId)
+        {
+            return foods.SingleOrDefault(x => x.Id == foodId);
         }
     }
 }

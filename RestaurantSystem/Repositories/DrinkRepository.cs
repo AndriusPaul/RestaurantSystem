@@ -28,16 +28,20 @@ namespace RestaurantSystem.Repositories
                     drinks = JsonSerializer.Deserialize<List<Drink>>(json);
                 }
 
-                if (drinks != null && drinks.Count > 0)
+                if (drinks == null && drinks.Count < 0)
                 {
-                    foreach (var item in drinks)
-                    {
-                        Console.WriteLine($"{item.Id}. Drink: {item.Name}, Price: {item.Price}, Qty: {item.Quantity}");
-                    }
+                Console.WriteLine("drink.json file is empty");
+            }
+            else
+            {
+                foreach (var drink in drinks)
+                {
+                    Console.WriteLine($"{drink.Id}. {drink.Name} - {drink.Price}");
                 }
+            }
                 return json;
             }
-            public List<Drink> GetDrink()
+            public List<Drink> GetDrinks()
             {
                 return drinks;
             }

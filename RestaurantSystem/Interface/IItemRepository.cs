@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantSystem.Classes
+namespace RestaurantSystem.Interface
 {
-    public class Init
+    public interface IItemRepository
     {
     }
 }

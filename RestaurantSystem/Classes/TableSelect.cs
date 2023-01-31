@@ -17,6 +17,7 @@ namespace RestaurantSystem.Classes
 
 
             Console.WriteLine("Pakeisti staliuko statusa:");
+            Console.WriteLine("Noredami grizti atgal paspauskite mygtuka - 0 ");
             Console.WriteLine("Select table:");
             var select = int.Parse(Console.ReadLine());
             switch (select)
@@ -33,8 +34,10 @@ namespace RestaurantSystem.Classes
                 case 4:
                     SelectTablesbyId();
                     break;
+                    case 0:
+                    break;
                 default:
-                    Console.WriteLine($"There are only {tables.GetTable().Count()} tables");
+                    Console.WriteLine($"There are only {tables} tables");
                     break;
             }
 
