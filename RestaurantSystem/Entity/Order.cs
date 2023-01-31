@@ -1,13 +1,13 @@
-﻿using RestaurantSystem.Repositories;
+﻿using RestaurantSystem.Classes;
+using RestaurantSystem.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantSystem.Classes
+namespace RestaurantSystem.Entity
 {
-
     public class Order
     {
         private static int orderIdCounter = 1;
@@ -28,7 +28,7 @@ namespace RestaurantSystem.Classes
             TableId = tableId;
             OrderDate = DateTime.Now;
             Items = items;
-           
+
         }
         public decimal GetTotalCost()
         {
@@ -40,6 +40,6 @@ namespace RestaurantSystem.Classes
             }
             return totalCost;
         }
-       
+
     }
 }

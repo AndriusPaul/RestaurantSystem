@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RestaurantSystem.Classes;
+using RestaurantSystem.Entity;
 using Formatting = Newtonsoft.Json.Formatting;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -45,5 +45,9 @@ namespace RestaurantSystem.Repositories
             {
                 return drinks;
             }
+        public Drink RetrieveById(int drinkId)
+        {
+            return drinks.SingleOrDefault(x => x.Id == drinkId);
         }
+    }
     }

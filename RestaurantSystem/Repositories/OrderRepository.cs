@@ -1,4 +1,5 @@
 ﻿using RestaurantSystem.Classes;
+using RestaurantSystem.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace RestaurantSystem.Repositories
     public class OrderRepository
     {
         public static int NextOrderId = 1;
-        private List<Order> Orders;
+        public List<Order> Orders;
         public OrderRepository()
         {
             Orders = new List<Order>();
@@ -26,22 +27,18 @@ namespace RestaurantSystem.Repositories
         {
             return Orders;
         }
-        public List<Order> GetOrderByOrderId(int orderId)
-        {
-            return Orders.Where(x => x.OrderId == orderId).ToList();
-        }
         public void CheckoutOrder(int order)
         {
 
             var orderIndex = Orders.FindIndex(o => o.OrderId == order);
             if (orderIndex != -1)
             {
-                
-                Console.WriteLine("Do you need recipet? 1- yes, 2- no");
+
+                Console.WriteLine("Do you need recipet? 1 - yes, 2 - no");
                 int choise = int.Parse(Console.ReadLine());
-                if(choise == 1)
+                if (choise == 1)
                 {
-                    var test = GetByOrderId(choise);
+                    var test = GetByOrderId(order);
                     Console.WriteLine("---------------------------");
                     Console.WriteLine("Thank you for comming");
                     Console.WriteLine("        Receipt");
@@ -49,11 +46,17 @@ namespace RestaurantSystem.Repositories
                     Console.WriteLine("Items:");
                     foreach (var item in test.Items)
                     {
-                        Console.WriteLine($"{item.Name} - {item.Price},- Eur");
+                        Console.WriteLine($"{item.Name} - {item.Price}");
                     }
                     Console.WriteLine("-------------");
                     Console.WriteLine($"Total: {test.GetTotalCost()}");
                     Console.WriteLine("---------------------------");
+
+                    Orders.RemoveAt(orderIndex);
+                    Console.WriteLine("Succesfully checkout.");
+                }
+                else
+                {
                     Orders.RemoveAt(orderIndex);
                     Console.WriteLine("Succesfully checkout.");
                 }
@@ -83,7 +86,7 @@ namespace RestaurantSystem.Repositories
             }
             else
             {
-
+                Console.WriteLine();
                 Console.WriteLine("List of all orders:");
                 foreach (Order order in Orders)
                 {
@@ -95,7 +98,7 @@ namespace RestaurantSystem.Repositories
                     foreach (OrderItem item in order.Items)
                     {
 
-                        Console.WriteLine($"{item.Name} - {item.Price} ,- Eur");
+                        Console.WriteLine($"{item.Name} - {item.Price}");
 
                     }
                     Console.WriteLine("Total Price: " + order.GetTotalCost());
@@ -106,9 +109,18 @@ namespace RestaurantSystem.Repositories
 
         public Order GetByOrderId(int orderId)
         {
-            
+
             return Orders.FirstOrDefault(x => x.OrderId == orderId);
 
+        }
+        public int GetTableIdByOrderId(int orderId)
+        {
+            var order = Orders.FirstOrDefault(x => x.OrderId == orderId);
+            if(order != null)
+            {
+                return order.TableId;
+            }
+            return 0;
         }
 
     }
